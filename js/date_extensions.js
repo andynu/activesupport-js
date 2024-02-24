@@ -2,9 +2,6 @@ import './inflections.js'
 import './array_extensions.js'
 import './number_interval_extensions.js'
 import './number_time_extensions.js'
-// Utils
-const pluralize = (count, word) => 
-  count === 1 ? word : `${word}s`;
 
 // Date Extensions
 const DateExtensions = {
@@ -22,7 +19,7 @@ const DateExtensions = {
   },
   RELATIVE_TIME_RANGES: {
     0:  "less than a minute",
-    15: "#{pluralize(this, 'minute')}",
+    15: "about #{minutes}",
     25: "less than half an hour",
     35: "about half an hour",
     55: "less than an hour",
@@ -164,9 +161,14 @@ Object.assign(Date.prototype, {
     const distanceInMinutes = Math.round(Math.abs(Date.now() - this.getTime()) / 60000);
     const result = Object.entries(Date.RELATIVE_TIME_RANGES).find(([key, value]) => distanceInMinutes <= key);
 
+    const value = result &&
+        result[1] &&
+        result[1].replace('#{minutes}', `${distanceInMinutes} ${"minute".pluralize(distanceInMinutes)}`);
+
     return result
-        ? `${options.prefix} ${result[1].replace('#{this}', distanceInMinutes)} ${options.suffix}`.trim()
+        ? `${options.prefix} ${value} ${options.suffix}`.trim()
         : `${this.relativeDate()} at ${this.strftime('%H:%M')}`;
+
   },
 
   since(ms) {

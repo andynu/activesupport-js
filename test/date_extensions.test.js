@@ -30,6 +30,7 @@ test('DateExtensions', () => {
     let relative_expectations = [
         [(-1).day(),'yesterday at 00:00'],
         [(0).second(),'less than a minute'],
+        [(10).minute(),'about 10 minutes'],
         [(1).hour(),'about an hour'],
         [(2).hour(),'about 2 hours'],
         [(3).hour(),'around 3 hours'],
