@@ -101,11 +101,6 @@ Inflections.uncountable("equipment", "information", "rice", "money", "species", 
 
 // String Extensions
 
-
-String.prototype.interpolate = function(binding) {
-    return new InterpolatableString(this, binding || window).toString();
-};
-
 String.prototype.pluralize = function() {
     return Inflector.pluralize(this.toString());
 };
