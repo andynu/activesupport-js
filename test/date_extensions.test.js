@@ -42,6 +42,18 @@ test('DateExtensions', () => {
         expect(offset.since(date).relativeTime()).toEqual(expectation);
     });
 
+    // relativeDate test
+    let relativeDate_expectations = [
+        [(-1).day(),'yesterday'],
+        [(0).second(),'today'],
+        [(1).day(),'tomorrow'],
+        [(2).day(),'Jan 3rd'],
+        [(3).day(),'Jan 4th'],
+    ]
+    relativeDate_expectations.forEach(([offset, expectation]) => {
+        expect(offset.since(date).relativeDate()).toEqual(expectation);
+    });
+
     expect(date.since((1).second())).toEqual(new Date('2023-01-01T00:00:01'));
     expect(date.ago((1).second())).toEqual(new Date('2022-12-31T23:59:59'));
     expect(date.beginningOfDay()).toEqual(new Date('2023-01-01T00:00:00'));
@@ -80,6 +92,17 @@ test('DateExtensions', () => {
     expect(date.toFormattedString('%Y-%m-%d %H:%M:%S %p')).toEqual('2023-01-01 00:00:00 AM');
     expect(date.toFormattedString('%Y-%m-%d %H:%M:%S %P')).toEqual('2023-01-01 00:00:00 am');
     expect(date.toFormattedString('%Y-%m-%d %I:%M:%S')).toEqual('2023-01-01 00:00:00');
+    expect(date.toFormattedString('%c')).toEqual('1/1/2023, 12:00:00 AM');
+    // catch error
+    expect(() => date.toFormattedString('%j')).toThrow('not implemented');
+    expect(() => date.toFormattedString('%U')).toThrow('not implemented');
+    expect(() => date.toFormattedString('%W')).toThrow('not implemented');
+    expect(date.toFormattedString('%w')).toEqual('0');
+    expect(() => date.toFormattedString('%x')).toThrow('not implemented');
+    expect(() => date.toFormattedString('%X')).toThrow('not implemented');
+    expect(date.toFormattedString('%y')).toEqual('123');
+    expect(date.toFormattedString('%Y')).toEqual('2023');
+    expect(() => date.toFormattedString('%Z')).toThrow('not implemented');
 
     expect(date.succ()).toEqual(new Date('2023-01-01T00:00:01'));
 
