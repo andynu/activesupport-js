@@ -12,6 +12,7 @@ test('Inflections', () => {
 
     expect(Inflector.singularize('words')).toBe('word');
     expect(Inflector.singularize('hives')).toBe('hive');
+    expect(Inflector.singularize('equipment')).toBe('equipment');
 
     expect(Inflector.ordinalize(1)).toBe('1st');
     expect(Inflector.ordinalize(2)).toBe('2nd');
@@ -42,4 +43,8 @@ test('Inflections', () => {
     expect(Inflector.ordinalize(1013)).toBe('1013th');
     expect(Inflector.ordinalize(1014)).toBe('1014th');
     expect(Inflector.ordinalize(1111)).toBe('1111th');
+
+    expect("one".pluralize()).toBe("ones")
+    expect("ones".singularize()).toBe("one")
+    expect((1).ordinalize()).toBe("1st")
 });
