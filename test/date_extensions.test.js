@@ -92,7 +92,7 @@ test('DateExtensions', () => {
     expect(date.toFormattedString('%Y-%m-%d %H:%M:%S %p')).toEqual('2023-01-01 00:00:00 AM');
     expect(date.toFormattedString('%Y-%m-%d %H:%M:%S %P')).toEqual('2023-01-01 00:00:00 am');
     expect(date.toFormattedString('%Y-%m-%d %I:%M:%S')).toEqual('2023-01-01 00:00:00');
-    expect(date.toFormattedString('%c')).toEqual('1/1/2023, 12:00:00 AM');
+    expect(date.toFormattedString('%c')).toEqual('1/1/2023, 12:00:00 AM');
     // catch error
     expect(() => date.toFormattedString('%j')).toThrow('not implemented');
     expect(() => date.toFormattedString('%U')).toThrow('not implemented');
