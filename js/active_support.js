@@ -12,4 +12,11 @@ class ActiveSupport {
   }
 }
 
-window.pluralize = ActiveSupport.pluralize;
+var pluralize = ActiveSupport.pluralize;
+
+// if window object defined
+if (typeof window !== 'undefined') {
+  window.pluralize = pluralize;
+}
+
+export { ActiveSupport, pluralize }
