@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 Once upon a time there was prototype.js and activesupport.js
 Both have been long abandoned.
 
